@@ -2,19 +2,14 @@
 
 import random
 
-liczby = ["drugą","trzecią","czwartą","piątą","szóstą","siódmą","ósmą","dziewiątą","dziesiątą"]
+liczby = ["pierwszą","drugą","trzecią","czwartą","piątą","szóstą","siódmą","ósmą","dziewiątą","dziesiątą"]
 lotto = []
 lotto_wygrane = []
 total = 0
 i = 0
 
-print("Podaj liczby z zakresu od 1 do 49")
-
-cyfra = input("podaj liczbę pierwszą: ")
-lotto.append(cyfra)
-
 while len(lotto) < 10:
-    cyfra = input("podaj liczbę {}: ".format(liczby[i]))
+    cyfra = input("podaj liczbę {}(zakres od 1 do 49): ".format(liczby[i]))
     if cyfra in lotto:
         print("Podałeś już taką liczbę, podaj inną!")
     else:
@@ -22,13 +17,10 @@ while len(lotto) < 10:
         i += 1
 
 
-cyfra = random.randint(1,49)
-lotto_wygrane.append(cyfra)
-
-
-for l in range(1,10):
+for l in range(10):
     cyfra = random.randint(1,49)
-    lotto_wygrane.append(cyfra)
+    if cyfra not in lotto_wygrane:
+        lotto_wygrane.append(cyfra)
 
 
 print(lotto)
@@ -39,8 +31,6 @@ for i in lotto:
         if int(i) == int(j):
             print("Trafiłeś liczbę: {}".format(i))
             total = total+1
-        else:
-            pass
 
 
 
