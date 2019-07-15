@@ -1,4 +1,4 @@
-
+# Program symuluje gre "lotto"
 
 
 import random
