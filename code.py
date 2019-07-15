@@ -33,6 +33,7 @@ for element in elements:
 
 
 print(all_code)
+print(f"Wszystkich kodów jest: {len(all_code)}")
 
 
 
