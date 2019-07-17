@@ -1,15 +1,17 @@
 
 
-collection10_20 = [12,14,13,17,19,18]
+collection = [12,14,13,17,19,18]
 
-missing_elements = []
 
-element = 10
+def check_the_collection(first_element,last_element,collection):
+    missing_elements = []
+    element = first_element
 
-while element != 21:
-    if element not in collection10_20:
-        missing_elements.append(element)
+    while element != last_element+1:
+        if element not in collection:
+            missing_elements.append(element)
+        element += 1
 
-    element += 1
+    print(f"Brakujące elementy to: {missing_elements}")
 
-print(missing_elements)
+check_the_collection(10,20,collection)
