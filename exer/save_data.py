@@ -13,7 +13,7 @@ class SaveData:
     def _read(self):
 
         with open("data.json", "r")  as my_file:
-            x = json.load(my_file)
+            self._all_data = json.load(my_file)
 
     def _write(self):
 
