@@ -20,7 +20,7 @@ class SaveData:
         with open("data.json", "w")  as my_file:
             json.dump(self._all_data, my_file, indent=2)
 
-    def savedata(self,city,status,site,description):
+    def savedata(self,city,status,site,description,date):
 
         test = []
 
@@ -34,6 +34,7 @@ class SaveData:
             i["city"] = city
             i["status"] = status
             i["site"] = site
+            i["date"] = date
             if description != '\n':
                 i["description"] = description
             else:
