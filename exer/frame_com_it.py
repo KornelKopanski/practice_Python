@@ -35,13 +35,13 @@ class Wi(Frame):
 
 
         self.site_company_entry = Entry(self,width = 33)
-        self.site_company_entry.grid(row=1,column=1)
+        self.site_company_entry.grid(row=2,column=1)
 
         self.description_entry = Text(self,width = 25, height = 10)
         self.description_entry.grid(row=3,column=1)
 
         self.date_entry = Entry(self,width = 33)
-        self.date_entry.grid(row=2,column=1)
+        self.date_entry.grid(row=1,column=1)
 
     def create_combobox(self):
 
@@ -63,6 +63,9 @@ class Wi(Frame):
         if site:
             save_data = SaveData()
             save_data.savedata(city, status, site, description,date_app)
+            self.site_company_entry.delete(0,END)
+            self.date_entry.delete(0,END)
+            self.description_entry.delete("1.0",END)
         else:
             showinfo("Uwaga","Proszę wpisać stronę 'WWW' danej firmy!")
 
