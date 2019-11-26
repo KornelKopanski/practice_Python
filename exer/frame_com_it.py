@@ -1,6 +1,7 @@
 
-from tkinter import *
-from tkinter import ttk
+from exer.save_data import *
+from exer.info_window import *
+from tkinter.messagebox import *
 
 class Wi(Frame):
 
@@ -14,7 +15,6 @@ class Wi(Frame):
         self.create_combobox()
 
     def create_label(self):
-
 
         self.site_company = Label(self,text="Strona WWW")
         self.site_company.grid(row=1,column=0)
@@ -39,20 +39,38 @@ class Wi(Frame):
 
     def create_combobox(self):
 
-        self.category_combobox = ttk.Combobox(self, values=["Lublin", "Warszawa"],width = 30)
-        self.category_combobox.current(0)
-        self.category_combobox.grid(row=0, column=1)
+        self.city_combobox = ttk.Combobox(self, values=["Lublin", "Warszawa"],width = 30)
+        self.city_combobox.current(0)
+        self.city_combobox.grid(row=0, column=1)
         self.status_combobox = ttk.Combobox(self,values=["Do wysłania","Wysłane","Feedback Positive","Feedback Negative"],width = 30)
         self.status_combobox.current(0)
         self.status_combobox.grid(row=3,column=1)
 
+    def get_data(self):
+
+        city = self.city_combobox.get()
+        status = self.status_combobox.get()
+        site = self.site_company_entry.get()
+        description = self.description_entry.get("1.0",END)
+
+        if site:
+            save_data = SaveData()
+            save_data.savedata(city, status, site, description)
+        else:
+            showinfo("Uwaga","Proszę wpisać stronę 'WWW' danej firmy!")
+
     def create_button(self):
 
-        self.save = Button(self,text="Zapisz dane", width = 25)
+        self.save = Button(self,text="DODAJ FIRMĘ", width = 25,command=self.get_data)
         self.save.grid(row=4,column=1)
 
-        self.save = Button(self, text="Pokaż dane", width = 25)
+        show_info_company = Info_Window()
+
+        self.save = Button(self, text="POKAŻ FIRMY", width = 25, command =show_info_company.main_product_window )
         self.save.grid(row=5, column=1)
+
+        self.save = Button(self, text="ZAMKNIJ", width=25, command=self.master.destroy)
+        self.save.grid(row=6, column=1)
 
 
 
